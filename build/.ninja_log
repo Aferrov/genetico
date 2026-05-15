@@ -31,3 +31,6 @@
 32	1044	8005131880770700	CMakeFiles/genetico_opengl.dir/genetico.cpp.obj	aa3dc743a5384e16
 24	705	8005132019840935	CMakeFiles/genetico_opengl.dir/tsp_ga.cpp.obj	14000bf7d80cff8a
 706	960	8005132026665768	genetico_opengl.exe	3b8c541dc4a6fb9b
+91	4231	8005453564950918	CMakeFiles/genetico_opengl.dir/genetico.cpp.obj	aa3dc743a5384e16
+114	4237	8005453565182799	CMakeFiles/genetico_opengl.dir/tsp_ga.cpp.obj	14000bf7d80cff8a
+4237	5046	8005453606414139	genetico_opengl.exe	3b8c541dc4a6fb9b
