@@ -1,0 +1,21 @@
+# ninja log v6
+3	135	8005130464173568	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	f426bea75bd13409
+3	135	8005130464173568	C:/Users/dnda/Documents/AI/genetico/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-mkdir	f426bea75bd13409
+136	44537	8005130908198164	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download	ba896361e525f434
+136	44537	8005130908198164	C:/Users/dnda/Documents/AI/genetico/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-download	ba896361e525f434
+44537	44669	8005130908258520	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	70979f910fc74048
+44537	44669	8005130908258520	C:/Users/dnda/Documents/AI/genetico/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-update	70979f910fc74048
+44669	44738	8005130910204498	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	219c4f373cab119b
+44669	44738	8005130910204498	C:/Users/dnda/Documents/AI/genetico/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-patch	219c4f373cab119b
+44738	44805	8005130910879632	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	81cae3559a06d5e2
+44738	44805	8005130910879632	C:/Users/dnda/Documents/AI/genetico/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-configure	81cae3559a06d5e2
+44805	44874	8005130911579622	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	692ecb8d7a3c8c41
+44805	44874	8005130911579622	C:/Users/dnda/Documents/AI/genetico/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-build	692ecb8d7a3c8c41
+44874	44948	8005130912291114	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	f1bbbfdcb599f8ca
+44874	44948	8005130912291114	C:/Users/dnda/Documents/AI/genetico/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-install	f1bbbfdcb599f8ca
+44949	45013	8005130912973783	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	c695b8d0d816007f
+44949	45013	8005130912973783	C:/Users/dnda/Documents/AI/genetico/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-test	c695b8d0d816007f
+45013	45106	8005130913889489	CMakeFiles/glfw-populate-complete	ba992453a74847c7
+45013	45106	8005130913889489	glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	ba992453a74847c7
+45013	45106	8005130913889489	C:/Users/dnda/Documents/AI/genetico/build/_deps/glfw-subbuild/CMakeFiles/glfw-populate-complete	ba992453a74847c7
+45013	45106	8005130913889489	C:/Users/dnda/Documents/AI/genetico/build/_deps/glfw-subbuild/glfw-populate-prefix/src/glfw-populate-stamp/glfw-populate-done	ba992453a74847c7

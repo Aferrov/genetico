@@ -1,6 +1,10 @@
 #include "tsp_ga.h"
 #include <algorithm>
 #include <numeric>
+#include <cmath>
+#include <string>
+#include <ctime>
+#include "imgui.h"
 
 const int NUM_CITIES = 30;
 const int POP_SIZE = 100;
@@ -13,8 +17,8 @@ mt19937 rng(static_cast<long unsigned int>(time(0)));
 double calculateDistance(const vector<int>& route, const vector<City>& cities) {
     double dist = 0;
     for (size_t i = 0; i < route.size(); ++i) {
-        Point p1 = cities[route[i]].pos;
-        Point p2 = cities[route[(i + 1) % route.size()]].pos;
+        Point2D p1 = cities[route[i]].pos;
+        Point2D p2 = cities[route[(i + 1) % route.size()]].pos;
         dist += sqrt(pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2));
     }
     return dist;
@@ -49,17 +53,28 @@ Individual crossover(const Individual& p1, const Individual& p2) {
     return child;
 }
 
-void drawRoute(Mat& img, const Individual& best, const vector<City>& cities, int gen, bool paused) {
-    img = Scalar(30, 30, 30);
+void drawRoute(ImDrawList* draw_list, const Individual& best, const vector<City>& cities, int gen, bool paused) {
+    // Dibujar fondo oscuro
+    draw_list->AddRectFilled(ImVec2(0, 0), ImVec2(WIDTH, HEIGHT), IM_COL32(30, 30, 30, 255));
+    
+    // Dibujar líneas
     for (size_t i = 0; i < best.route.size(); ++i) {
-        line(img, cities[best.route[i]].pos, cities[best.route[(i + 1) % NUM_CITIES]].pos, Scalar(0, 255, 0), 2, LINE_AA);
+        Point2D p1 = cities[best.route[i]].pos;
+        Point2D p2 = cities[best.route[(i + 1) % NUM_CITIES]].pos;
+        draw_list->AddLine(ImVec2(p1.x, p1.y), ImVec2(p2.x, p2.y), IM_COL32(0, 255, 0, 255), 2.0f);
     }
+    
+    // Dibujar ciudades
     for (const auto& city : cities) {
-        circle(img, city.pos, 5, Scalar(0, 0, 255), -1);
-        putText(img, to_string(city.id), city.pos + Point(5, -5), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(255, 255, 255), 1);
+        draw_list->AddCircleFilled(ImVec2(city.pos.x, city.pos.y), 5.0f, IM_COL32(255, 0, 0, 255));
+        string id_str = to_string(city.id);
+        draw_list->AddText(ImVec2(city.pos.x + 5, city.pos.y - 15), IM_COL32(255, 255, 255, 255), id_str.c_str());
     }
+    
+    // Información de texto
     string info = "Gen: " + to_string(gen) + " | Dist: " + to_string((int)best.distance);
-    string status = paused ? "PAUSADO - 'S' (Step), 'A' (Auto)" : "CORRIENDO... 'P' (Pausar)";
-    putText(img, info, Point(20, 40), FONT_HERSHEY_SIMPLEX, 0.8, Scalar(255, 255, 255), 2);
-    putText(img, status, Point(20, HEIGHT - 20), FONT_HERSHEY_SIMPLEX, 0.5, Scalar(0, 255, 255), 1);
+    string status = paused ? "PAUSADO - Click en 'Paso a Paso' o 'Auto'" : "CORRIENDO... Click en 'Pausa'";
+    
+    draw_list->AddText(ImVec2(20, 40), IM_COL32(255, 255, 255, 255), info.c_str());
+    draw_list->AddText(ImVec2(20, HEIGHT - 30), IM_COL32(0, 255, 255, 255), status.c_str());
 }
