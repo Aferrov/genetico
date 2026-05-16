@@ -50,7 +50,7 @@ int main() {
     vector<Individual> population;
     
     generateCities(cities, config.num_cities);
-    initializePopulation(population, cities, config);
+    inicializar_poblacion(population, cities, config);
 
     int generation = 0;
     int gens_without_improvement = 0;
@@ -66,7 +66,7 @@ int main() {
             if (cities.size() != config.num_cities) {
                 generateCities(cities, config.num_cities);
             }
-            initializePopulation(population, cities, config);
+            inicializar_poblacion(population, cities, config);
             // Asegurar que la generacion inicial esté ordenada
             sort(population.begin(), population.end(), [](const Individual& a, const Individual& b) {
                 return a.distance < b.distance;
@@ -88,7 +88,7 @@ int main() {
                     Individual p2 = selectParent(population, config);
                     Individual child = crossover(p1, p2, config);
                     mutate(child, config);
-                    child.distance = calculateDistance(child.route, cities);
+                    child.distance = calcular_distancia(child.route, cities);
                     nextGen.push_back(child);
                 }
                 population = nextGen;
@@ -104,7 +104,7 @@ int main() {
                     Individual p2 = selectParent(population, config);
                     Individual child = crossover(p1, p2, config);
                     mutate(child, config);
-                    child.distance = calculateDistance(child.route, cities);
+                    child.distance = calcular_distancia(child.route, cities);
                     children.push_back(child);
                 }
                 // Reemplazamos a los peores individuos (los del final de la lista)

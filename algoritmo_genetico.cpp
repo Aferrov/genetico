@@ -12,7 +12,7 @@ const int HEIGHT = 900;
 
 mt19937 rng(static_cast<long unsigned int>(time(0)));
 
-double calculateDistance(const vector<int>& route, const vector<City>& cities) {
+double calcular_distancia(const vector<int>& route, const vector<City>& cities) {
     double dist = 0;
     for (size_t i = 0; i < route.size(); ++i) {
         Point2D p1 = cities[route[i]].pos;
@@ -22,14 +22,14 @@ double calculateDistance(const vector<int>& route, const vector<City>& cities) {
     return dist;
 }
 
-void initializePopulation(vector<Individual>& population, const vector<City>& cities, const GAConfig& config) {
+void inicializar_poblacion(vector<Individual>& population, const vector<City>& cities, const GAConfig& config) {
     population.resize(config.pop_size);
     for (int i = 0; i < config.pop_size; ++i) {
         population[i].route.resize(config.num_cities);
         iota(population[i].route.begin(), population[i].route.end(), 0);
         
         if (config.init_mode == InitMode::GREEDY && i < min(config.pop_size, config.num_cities)) {
-            // Greedy Initialization: empezar en ciudad 'i', buscar el más cercano
+            // empezar en ciudad 'i', buscar el más cercano
             vector<bool> visited(config.num_cities, false);
             int current_city = i; // ciudad inicial
             population[i].route[0] = current_city;
@@ -54,10 +54,10 @@ void initializePopulation(vector<Individual>& population, const vector<City>& ci
                 current_city = best_next;
             }
         } else {
-            // Random Initialization
+            
             shuffle(population[i].route.begin(), population[i].route.end(), rng);
         }
-        population[i].distance = calculateDistance(population[i].route, cities);
+        population[i].distance = calcular_distancia(population[i].route, cities);
     }
 }
 
@@ -73,7 +73,7 @@ Individual selectParent(const vector<Individual>& population, const GAConfig& co
         }
         return population[best_idx];
     } 
-    else { // ROULETTE
+    else { 
         double total_fitness = 0;
         vector<double> fitness(population.size());
         for (size_t i = 0; i < population.size(); ++i) {

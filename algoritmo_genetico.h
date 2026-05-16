@@ -47,11 +47,11 @@ struct Individual {
     double distance;
 };
 
-double calculateDistance(const vector<int>& route, const vector<City>& cities);
+double calcular_distancia(const vector<int>& route, const vector<City>& cities);
 void mutate(Individual& ind, const GAConfig& config);
 Individual crossover(const Individual& p1, const Individual& p2, const GAConfig& config);
 Individual selectParent(const vector<Individual>& population, const GAConfig& config);
-void initializePopulation(vector<Individual>& population, const vector<City>& cities, const GAConfig& config);
+void inicializar_poblacion(vector<Individual>& population, const vector<City>& cities, const GAConfig& config);
 
 void drawRoute(ImDrawList* draw_list, const Individual& best, const vector<City>& cities, int gen, int gens_without_improvement, bool paused);
 
