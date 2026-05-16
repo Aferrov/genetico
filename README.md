@@ -71,6 +71,9 @@ El código fue refactorizado para mantener una estructura limpia y fácil de ent
 - `algoritmo_genetico.h` / `algoritmo_genetico.cpp`: Contienen toda la lógica, estructuras y matemáticas del algoritmo genético. Aquí encontrarás la implementación de los operadores de cruce (OX, PMX), inicialización Greedy, fitness, etc.
 - `CMakeLists.txt`: Configuración de compilación que incluye la descarga automática de librerías de terceros (ImGui y GLFW).
 
-## 📄 Licencia
+## 👥 Autores
+Este proyecto fue desarrollado colaborativamente por:
 
-Este proyecto está abierto a cualquier uso educativo o personal.
+👤 Ferro Vásquez, Arleen Maritza
+👤 Huanca Olazabal, Cristhian David
+👤 Mamani Casilla, Wilson Isaac
