@@ -1,12 +1,12 @@
 # Laboratorio Interactivo del Algoritmo Genético (TSP)
 
-Este proyecto es un simulador interactivo escrito en **C++** y **OpenGL** que resuelve el **Problema del Viajante de Comercio (TSP - Traveling Salesperson Problem)** utilizando un Algoritmo Genético avanzado. Su propósito principal es educativo, permitiendo visualizar en tiempo real cómo diferentes estrategias y operadores genéticos afectan la evolución y convergencia hacia la ruta óptima.
+Este proyecto es un simulador interactivo escrito en **C++** y **OpenGL** que resuelve el **Problema del Viajante de Comercio (TSP - Traveling Salesperson Problem)** utilizando un Algoritmo Genético. Su propósito principal es educativo, permitiendo visualizar en tiempo real cómo diferentes estrategias y operadores genéticos afectan la evolución y convergencia hacia la ruta óptima.
 
 La interfaz gráfica fue construida usando **Dear ImGui**, lo que permite modificar los parámetros del algoritmo genético al vuelo y observar el impacto inmediato en la simulación.
 
 ## 🚀 Características y Opciones del Simulador
 
-El laboratorio cuenta con un panel de control avanzado que te permite experimentar con diferentes fases del algoritmo genético:
+El laboratorio cuenta con un panel de control que te permite experimentar con diferentes fases del algoritmo genético:
 
 * **Control de Simulación:**
   * **Reanudar / Pausar:** Detén la evolución en cualquier momento para analizar la ruta actual.

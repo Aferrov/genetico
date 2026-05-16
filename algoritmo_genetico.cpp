@@ -150,7 +150,7 @@ Individual crossover(const Individual& p1, const Individual& p2, const GAConfig&
     return child;
 }
 
-void drawRoute(ImDrawList* draw_list, const Individual& best, const vector<City>& cities, int gen, bool paused) {
+void drawRoute(ImDrawList* draw_list, const Individual& best, const vector<City>& cities, int gen, int gens_without_improvement, bool paused) {
     draw_list->AddRectFilled(ImVec2(0, 0), ImVec2(WIDTH, HEIGHT), IM_COL32(30, 30, 30, 255));
     
     if (best.route.size() != cities.size()) return;
@@ -167,7 +167,7 @@ void drawRoute(ImDrawList* draw_list, const Individual& best, const vector<City>
         draw_list->AddText(ImVec2(city.pos.x + 5, city.pos.y - 15), IM_COL32(255, 255, 255, 255), id_str.c_str());
     }
     
-    string info = "Generacion: " + to_string(gen) + " | Distancia minima: " + to_string((int)best.distance);
+    string info = "Generacion: " + to_string(gen) + " | Distancia minima: " + to_string((int)best.distance) + " | Sin mejora: " + to_string(gens_without_improvement) + " gens";
     string status = paused ? "PAUSADO - Modifica config o dale a Play" : "CORRIENDO... Buscando optima";
     
     draw_list->AddText(ImVec2(20, 40), IM_COL32(255, 255, 255, 255), info.c_str());

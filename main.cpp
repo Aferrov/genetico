@@ -31,7 +31,7 @@ int main() {
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE); // Bloquea redimensionar o maximizar la ventana
 
-    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Algoritmo Genetico - TSP Avanzado", nullptr, nullptr);
+    GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Algoritmo Genetico - TSP", nullptr, nullptr);
     if (window == nullptr) return 1;
     glfwMakeContextCurrent(window);
     glfwSwapInterval(1); 
@@ -53,6 +53,8 @@ int main() {
     initializePopulation(population, cities, config);
 
     int generation = 0;
+    int gens_without_improvement = 0;
+    double best_historical_distance = 1e9;
     bool paused = true;
     bool step_requested = false;
     bool needs_restart = false;
@@ -70,6 +72,8 @@ int main() {
                 return a.distance < b.distance;
             });
             generation = 0;
+            gens_without_improvement = 0;
+            best_historical_distance = 1e9;
             needs_restart = false;
         }
 
@@ -111,6 +115,14 @@ int main() {
                     return a.distance < b.distance;
                 });
             }
+            
+            if (population[0].distance < best_historical_distance) {
+                best_historical_distance = population[0].distance;
+                gens_without_improvement = 0;
+            } else {
+                gens_without_improvement++;
+            }
+            
             generation++;
             step_requested = false;
         }
@@ -131,14 +143,17 @@ int main() {
         ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(1.0f, 0.9f, 0.2f, 1.0f)); 
         ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(0.0f, 12.0f)); 
         
-        bool main_open = ImGui::CollapsingHeader(" --- CONFIGURACION AVANZADA TSP --- ", ImGuiTreeNodeFlags_DefaultOpen);
+        bool main_open = ImGui::CollapsingHeader(" --- CONFIGURACION TSP --- ", ImGuiTreeNodeFlags_DefaultOpen);
         
         ImGui::PopStyleVar();
         ImGui::PopStyleColor(4);
 
         if (main_open) {
             ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 1.0f), "Generacion: %d", generation);
-            if (!population.empty()) ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 1.0f), "Distancia Minima: %d", (int)population[0].distance);
+            if (!population.empty()) {
+                ImGui::TextColored(ImVec4(1.0f, 1.0f, 1.0f, 1.0f), "Distancia Minima: %d", (int)population[0].distance);
+                ImGui::TextColored(ImVec4(1.0f, 0.4f, 0.4f, 1.0f), "Generaciones sin mejora: %d", gens_without_improvement);
+            }
             
             ImGui::SetWindowFontScale(1.3f); // Escalar fuente para los botones (1.5x sobre la base)
             
@@ -174,6 +189,12 @@ int main() {
             ImGui::SetWindowFontScale(1.0f); // Restaurar escala de fuente original
 
             ImGui::Separator();
+            
+            // Cambiar el color de los CollapsingHeaders a un tono morado/purpura
+            ImGui::PushStyleColor(ImGuiCol_Header, ImVec4(0.4f, 0.2f, 0.6f, 1.0f));
+            ImGui::PushStyleColor(ImGuiCol_HeaderHovered, ImVec4(0.5f, 0.3f, 0.7f, 1.0f));
+            ImGui::PushStyleColor(ImGuiCol_HeaderActive, ImVec4(0.3f, 0.1f, 0.5f, 1.0f));
+
             if (ImGui::CollapsingHeader("1-3. Estructura e Inicializacion", ImGuiTreeNodeFlags_DefaultOpen)) {
                 ImGui::TextDisabled("Representacion: Permutacion");
                 ImGui::TextDisabled("Fitness: Distancia Total (Min)");
@@ -213,13 +234,14 @@ int main() {
                 if (ImGui::Combo("Reemplazo", &rep_mode, rep_items, 2)) config.replacement_mode = (ReplacementMode)rep_mode;
                 ImGui::SliderInt("Elitismo", &config.elite_count, 0, config.pop_size / 2);
             }
+            ImGui::PopStyleColor(3); // Restaurar colores de Header
         }
 
         ImGui::End();
 
         ImDrawList* draw_list = ImGui::GetBackgroundDrawList();
         if (!population.empty()) {
-            drawRoute(draw_list, population[0], cities, generation, paused);
+            drawRoute(draw_list, population[0], cities, generation, gens_without_improvement, paused);
         }
 
         ImGui::Render();

@@ -53,6 +53,6 @@ Individual crossover(const Individual& p1, const Individual& p2, const GAConfig&
 Individual selectParent(const vector<Individual>& population, const GAConfig& config);
 void initializePopulation(vector<Individual>& population, const vector<City>& cities, const GAConfig& config);
 
-void drawRoute(ImDrawList* draw_list, const Individual& best, const vector<City>& cities, int gen, bool paused);
+void drawRoute(ImDrawList* draw_list, const Individual& best, const vector<City>& cities, int gen, int gens_without_improvement, bool paused);
 
 #endif
