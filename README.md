@@ -1,17 +1,18 @@
-# Laboratorio Interactivo del Algoritmo Genético (TSP)
+# Programa Interactivo del Algoritmo Genético (TSP)
 
-Este proyecto es un simulador interactivo escrito en **C++** y **OpenGL** que resuelve el **Problema del Viajante de Comercio (TSP - Traveling Salesperson Problem)** utilizando un Algoritmo Genético. Su propósito principal es educativo, permitiendo visualizar en tiempo real cómo diferentes estrategias y operadores genéticos afectan la evolución y convergencia hacia la ruta óptima.
+Este proyecto es una aplicacion interactiva escrita en **C++** y **OpenGL** que resuelve el **Problema del Viajante de Comercio (TSP - Traveling Salesperson Problem)** utilizando un Algoritmo Genético. Su propósito principal es educativo, permitiendo visualizar en tiempo real cómo diferentes estrategias y operadores genéticos afectan la evolución y convergencia hacia la ruta óptima.
 
 La interfaz gráfica fue construida usando **Dear ImGui**, lo que permite modificar los parámetros del algoritmo genético al vuelo y observar el impacto inmediato en la simulación.
 
 ## 🚀 Características y Opciones del Simulador
 
-El laboratorio cuenta con un panel de control que te permite experimentar con diferentes fases del algoritmo genético:
+La aplicacion cuenta con un panel de control que te permite experimentar con diferentes fases del algoritmo genético:
 
-* **Control de Simulación:**
+* **Control de Simulación y Monitoreo:**
   * **Reanudar / Pausar:** Detén la evolución en cualquier momento para analizar la ruta actual.
   * **Paso a Paso:** Avanza generación por generación manualmente.
   * **Reiniciar Simulación:** Genera un nuevo conjunto de ciudades y reinicia la población.
+  * **Generaciones sin mejora:** Indicador en tiempo real que cuenta las generaciones consecutivas sin hallar una ruta más corta. Es fundamental para saber cuándo el algoritmo ha convergido en un óptimo local y sirve como un excelente criterio de parada.
 
 * **1. Estructura e Inicialización:**
   * **Número de Ciudades:** Ajustable de 10 a 100 ciudades distribuidas aleatoriamente.
