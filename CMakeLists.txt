@@ -4,6 +4,9 @@ project(Genetico CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Fuerza la compilación estática para que el .exe sea 100% independiente
+set(CMAKE_EXE_LINKER_FLAGS "-static")
+
 include(FetchContent)
 
 # Fetch GLFW
@@ -38,8 +41,8 @@ set(IMGUI_SOURCES
 )
 
 add_executable(genetico_opengl 
-    genetico.cpp 
-    tsp_ga.cpp 
+    main.cpp 
+    algoritmo_genetico.cpp 
     ${IMGUI_SOURCES}
 )
 

@@ -1,4 +1,4 @@
-#include "tsp_ga.h"
+#include "algoritmo_genetico.h"
 #include <algorithm>
 #include <numeric>
 #include <cmath>
@@ -7,8 +7,8 @@
 #include <set>
 #include "imgui.h"
 
-const int WIDTH = 800;
-const int HEIGHT = 600;
+const int WIDTH = 1600;
+const int HEIGHT = 900;
 
 mt19937 rng(static_cast<long unsigned int>(time(0)));
 
@@ -167,9 +167,9 @@ void drawRoute(ImDrawList* draw_list, const Individual& best, const vector<City>
         draw_list->AddText(ImVec2(city.pos.x + 5, city.pos.y - 15), IM_COL32(255, 255, 255, 255), id_str.c_str());
     }
     
-    string info = "Gen: " + to_string(gen) + " | Dist: " + to_string((int)best.distance);
+    string info = "Generacion: " + to_string(gen) + " | Distancia minima: " + to_string((int)best.distance);
     string status = paused ? "PAUSADO - Modifica config o dale a Play" : "CORRIENDO... Buscando optima";
     
     draw_list->AddText(ImVec2(20, 40), IM_COL32(255, 255, 255, 255), info.c_str());
-    draw_list->AddText(ImVec2(20, HEIGHT - 30), IM_COL32(0, 255, 255, 255), status.c_str());
+    draw_list->AddText(ImVec2(20, 70), IM_COL32(0, 255, 255, 255), status.c_str());
 }
