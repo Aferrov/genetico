@@ -1,3 +1,10 @@
+## 👥 Autores
+Este proyecto fue desarrollado colaborativamente por:
+
+👤 Ferro Vásquez, Arleen Maritza
+👤 Huanca Olazabal, Cristhian David
+👤 Mamani Casilla, Wilson Isaac
+
 # Programa Interactivo del Algoritmo Genético (TSP)
 
 Este proyecto es una aplicacion interactiva escrita en **C++** y **OpenGL** que resuelve el **Problema del Viajante de Comercio (TSP - Traveling Salesperson Problem)** utilizando un Algoritmo Genético. Su propósito principal es educativo, permitiendo visualizar en tiempo real cómo diferentes estrategias y operadores genéticos afectan la evolución y convergencia hacia la ruta óptima.
@@ -71,9 +78,4 @@ El código fue refactorizado para mantener una estructura limpia y fácil de ent
 - `algoritmo_genetico.h` / `algoritmo_genetico.cpp`: Contienen toda la lógica, estructuras y matemáticas del algoritmo genético. Aquí encontrarás la implementación de los operadores de cruce (OX, PMX), inicialización Greedy, fitness, etc.
 - `CMakeLists.txt`: Configuración de compilación que incluye la descarga automática de librerías de terceros (ImGui y GLFW).
 
-## 👥 Autores
-Este proyecto fue desarrollado colaborativamente por:
 
-👤 Ferro Vásquez, Arleen Maritza
-👤 Huanca Olazabal, Cristhian David
-👤 Mamani Casilla, Wilson Isaac
